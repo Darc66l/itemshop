@@ -8,6 +8,6 @@ def products(request):
     return render(request, 'products.html')
 def contact(request):
     return render(request, 'contact.html')
-def singleproduct(request):
+def product(request):
     return render(request, 'single-product.html')
 
