@@ -1,13 +1,37 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'index.html')
+    title="Home"
+    links_menu = [{'link':'index','name':'Главная'},
+                  {'link':'about','name':'О нас'},
+                  {'link':'products:index','name':'Продукты'},
+                  {'link':'contact','name':'Контакты'},
+    
+                  ]
+    context = {'title': title,
+               'links_menu':links_menu,
+    }
+
+    return render(request, 'index.html',context)
 def about(request):
-    return render(request, 'about.html')
+    title="About US"
+    
+    context = {'title': title}
+
+    return render(request, 'about.html',context)
 def products(request):
-    return render(request, 'products.html')
+    title="Каталог продуктов"
+    context = {'title': title}
+
+    return render(request, 'products.html',context)
 def contact(request):
-    return render(request, 'contact.html')
+    title="Contacts"
+    context = {'title': title}
+
+    return render(request, 'contact.html',context)
 def product(request):
-    return render(request, 'single-product.html')
+    title="Product"
+    context = {'title': title}
+
+    return render(request, 'single-product.html',context)
 
