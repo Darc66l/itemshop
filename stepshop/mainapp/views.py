@@ -1,44 +1,34 @@
 from django.shortcuts import render
-
-
-def get_cont(title):
-    links_menu = [{'link':'index','name':'Главная'},
-                  {'link':'about','name':'О нас'},
-                  {'link':'products:index','name':'Продукты'},
-                  {'link':'contact','name':'Контакты'},
-    ]
-
-    context = {'title': title,
-               'links_menu':links_menu,
-    }
+from mainapp.models import Product
+def links_m(**kwargs):
+    links_menu = [       
+         {'link': 'index', 'name': "Главная"},
+        {'link': 'products:index', 'name': "Продукты"},        
+        {'link': 'about', 'name': "О нас"},
+        {'link': 'contact', 'name': "Контакты"},    ]
+    context = {        'links_menu': links_menu,
+    }   
+    context.update(**kwargs)
     return context
-
-
-
 def index(request):
-    title="Home"
-    context = get_cont(title)
-
-    return render(request, 'index.html',context)
+    title = "Main"    
+    context = links_m(title=title)
+    return render(request, 'index.html', context)
 def about(request):
-    title="About US"
-    
-    context = get_cont(title)
-
-    return render(request, 'about.html',context)
+    title = "About"    
+    context = links_m(title=title)
+    return render(request, 'about.html', context)
 def products(request):
-    title="Каталог продуктов"
-    context = get_cont(title)
-
-    return render(request, 'products.html',context)
+    title = "Catalog"
+    prods = Product.objects.all()    
+    context = links_m(title=title, prods=prods)
+    return render(request, 'products.html', context)
 def contact(request):
-    title="Contacts"
-    context = get_cont(title)
-
-    return render(request, 'contact.html',context)
-def product(request):
-    title="Product"
-    context = get_cont(title)
-
-    return render(request, 'single-product.html',context)
-
+    title = "Contacts"    
+    context = links_m(title=title)
+    return render(request, 'contact.html', context)
+def product(request,pk):
+    title = "Product page"
+    prod = Product.objects.get(pk=pk)    
+    context = links_m(title=title, product = product)
+    return render(request, 'single-product.html', context)
