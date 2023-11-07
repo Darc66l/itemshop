@@ -1,0 +1,62 @@
+[
+    {
+      "model": "mainapp.product",
+      "pk": 1,
+      "fields": {
+        "category": 2,
+        "name": "vans",
+        "image": "product_images/item-06.jpg",
+        "short_desc": "вансы",
+        "description": "вансы лоу скейтеры йоу",
+        "price": "5000.00",
+        "quintity": 10,
+        "created_at": "2023-10-31T09:37:50.697Z",
+        "created_updated": "2023-10-31T10:54:22.252Z"
+      }
+    },
+    {
+      "model": "mainapp.product",
+      "pk": 2,
+      "fields": {
+        "category": 2,
+        "name": "Жинсы",
+        "image": "product_images/item-01.jpg",
+        "short_desc": "жинсы синие тёмно",
+        "description": "тёмно синие джинсы",
+        "price": "1000.00",
+        "quintity": 100,
+        "created_at": "2023-10-31T10:47:59.747Z",
+        "created_updated": "2023-10-31T10:55:53.195Z"
+      }
+    },
+    {
+      "model": "mainapp.product",
+      "pk": 3,
+      "fields": {
+        "category": 2,
+        "name": "сумке розовая",
+        "image": "product_images/item-04.jpg",
+        "short_desc": "сумке розовий",
+        "description": "",
+        "price": "500.00",
+        "quintity": 100,
+        "created_at": "2023-10-31T10:55:27.884Z",
+        "created_updated": "2023-10-31T10:55:43.010Z"
+      }
+    },
+    {
+      "model": "mainapp.product",
+      "pk": 4,
+      "fields": {
+        "category": 2,
+        "name": "куртка модный",
+        "image": "",
+        "short_desc": "синий куртка",
+        "description": "",
+        "price": "1000.00",
+        "quintity": 20,
+        "created_at": "2023-10-31T11:00:37.861Z",
+        "created_updated": "2023-10-31T11:00:50.317Z"
+      }
+    }
+  ]
