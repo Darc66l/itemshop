@@ -1,0 +1,18 @@
+[
+    {
+      "model": "mainapp.category",
+      "pk": 2,
+      "fields": {
+        "name": "Обувь",
+        "desctiption": ""
+      }
+    },
+    {
+      "model": "mainapp.category",
+      "pk": 3,
+      "fields": {
+        "name": "Vegetables",
+        "desctiption": "Some greens"
+      }
+    }
+  ]
