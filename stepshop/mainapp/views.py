@@ -1,34 +1,57 @@
-from django.shortcuts import render
-from mainapp.models import Product
-def links_m(**kwargs):
-    links_menu = [       
-         {'link': 'index', 'name': "Главная"},
-        {'link': 'products:index', 'name': "Продукты"},        
-        {'link': 'about', 'name': "О нас"},
-        {'link': 'contact', 'name': "Контакты"},    ]
-    context = {        'links_menu': links_menu,
-    }   
-    context.update(**kwargs)
+from django.shortcuts import render, get_object_or_404
+
+from mainapp.models import Product, Category
+
+
+def get_data(**kawargs):
+    links_menu = [
+        {'link': 'index', 'name': 'Главное'},
+        {'link': 'products:index', 'name': 'Продукты'},
+        {'link': 'about', 'name': 'О нас'},
+        {'link': 'contacts', 'name': 'Контакты'}
+    ]
+    context = {'links_menu': links_menu}
+    context.update(**kawargs)
     return context
+
+
 def index(request):
-    title = "Main"    
-    context = links_m(title=title)
+    title = "главное"
+    prods = Product.objects.all()
+    context = get_data(title=title, prods=prods)
     return render(request, 'index.html', context)
+
+
 def about(request):
-    title = "About"    
-    context = links_m(title=title)
+    title = "О нас"
+    context = get_data(title=title)
     return render(request, 'about.html', context)
-def products(request):
-    title = "Catalog"
-    prods = Product.objects.all()    
-    context = links_m(title=title, prods=prods)
+
+
+def contacts(request):
+    title = "Связаться с нами"
+    context = get_data(title=title)
+    return render(request, 'contacts.html', context)
+
+
+def product(request, pk):
+    title = "Продукт"
+    prod = Product.objects.get(pk=pk)
+    context = get_data(title=title, prod=prod)
+    return render(request, 'product.html', context)
+
+
+def products(request, pk=None):
+    title = "Котолог продуктов"
+
+    #_products = Product.objects.all()
+    _products = Product.objects.order_by('price')
+    context = {}
+
+    if pk is not None:
+        category = get_object_or_404(Category, pk=pk)
+        _products = Product.objects.filter(category__pk=pk).order_by('price')
+        context = get_data(category=category)
+
+    context = get_data(title=title, prods=_products, **context)
     return render(request, 'products.html', context)
-def contact(request):
-    title = "Contacts"    
-    context = links_m(title=title)
-    return render(request, 'contact.html', context)
-def product(request,pk):
-    title = "Product page"
-    prod = Product.objects.get(pk=pk)    
-    context = links_m(title=title, product = product)
-    return render(request, 'single-product.html', context)

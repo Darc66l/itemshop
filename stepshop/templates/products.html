@@ -1,7 +1,11 @@
 {% extends 'layout/base.html' %}
 {% load static %}
+{% block css %}
+ <link href="{% static 'assets/css/style.css'%}" rel="stylesheet">
+{% block css %}
 {% block title %} - {{title|capfirst}}{%endblock%}
 {% block content %}
+
    <!-- Items Starts Here -->
    <div class="featured-page">
     <div class="container">
@@ -9,11 +13,22 @@
         <div class="col-md-4 col-sm-12">
           <div class="section-heading">
             <div class="line-dec"></div>
-            <h1>Featured Items</h1>
+            {% if category %}
+            <h1>{{category}}</h1>
+            {% endif %}
           </div>
         </div>
         <div class="col-md-8 col-sm-12">
           <div id="filters" class="button-group">
+            {% for category in categories %}
+            <button class="btn btn-primary">
+              <a href="{% url 'products:category' category.pk %}">
+              {{ category.name }}
+              </a>
+            </button>
+            {% endfor %}
+
+
             <button class="btn btn-primary" data-filter="*">All Products</button>
             <button class="btn btn-primary" data-filter=".new">Newest</button>
             <button class="btn btn-primary" data-filter=".low">Low Price</button>
@@ -40,6 +55,10 @@
               {% endif %}
               <h4>{{prod.name}}</h4>
               <h6>{{prod.price}}</h6>
+              <p>{{prod.description}}</p>
+              <button class="btn btn-primary">
+                <a href="{% url 'basket:add' prod.pk %}"
+              </button>
             </div>
           </a>
         </div>
