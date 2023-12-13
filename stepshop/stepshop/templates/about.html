@@ -1,0 +1,43 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block title %}&mdash;{{ title|capfirst }}{% endblock %}
+{% block content %}
+ <!-- Page Content -->
+    <!-- About Page Starts Here -->
+    <div class="about-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>About Us</h1>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="left-image">
+              <img src="{% static '/assets/images/about-us.jpg' %}" alt="">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right-content">
+              <h4>Кто Мы?</h4>
+              <p>Мы — команда шизофреников Алкесандра, собравшихся вместе, чтобы создать удивительное пространство для онлайн-покупок продуктов. "Beaver" — это не просто магазин, это смешное слово, где мы стремимся предоставить вам лучший выбор качественных продуктов с удобством онлайн-покупок.</p><br>
+
+              <h4>Наши Продукты</h4>
+              <p>"Beaver" предлагает разнообразный ассортимент продуктов — от свежих фруктов и овощей до эксклюзивных гурманских угощений и омона. Мы следим за последними тенденциями рынка, чтобы удовлетворить самые изысканные вкусы наших клиентов.</p><br>
+
+              <h4>Свяжитесь с Нами</h4>
+              <p>У вас есть вопросы или предложения? Мы всегда готовы выслушать вас. Свяжитесь с нашей дружелюбной командой поддержки, и мы постараемся сделать ваш опыт покупок на "Beaver" еще более приятным.</p>
+
+              <p>Спасибо, что выбрали "Beaver" — вашего надежного партнера в мире качественных продуктов и удобных онлайн-покупок!</p>
+
+              <div class="share">
+                <h6>Find us on: <span><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-linkedin"></i></a><a href="#"><i class="fa fa-twitter"></i></a></span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- About Page Ends Here -->
+{% endblock %}
