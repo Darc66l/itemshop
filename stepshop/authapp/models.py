@@ -9,3 +9,7 @@ class ShopUser(AbstractUser):
     age = models.PositiveIntegerField(
         verbose_name='возраст'
     )
+
+    is_deleted = models.BooleanField(
+        default = False,
+    )
